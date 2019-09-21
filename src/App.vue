@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <HelloWorld @booksFound="updateBooksFoundList"/>
-    <BooksFoundList :booksFoundList="booksFoundList"/>
+    <BooksFoundList v-if="this.booksFoundList" :booksFoundList="booksFoundList"/>
   </div>
 </template>
 

@@ -2,28 +2,34 @@
   <div class="hello">
     <form>
       <label for="title">Rechercher un livre</label>
-      <input id="title" type="text" v-model="title" v-on:keyup="searchBook"><br>
+      <input id="title" type="text" v-model="title" v-on:keyup="searchBooks" />
+      <br />
     </form>
   </div>
 </template>
 
 <script>
-const axios = require('axios');
+const axios = require("axios");
 
 export default {
   name: "HelloWorld",
   data() {
     return {
-      msg: "Welcome to Your Vue.js App",
       title: ""
     };
   },
   methods: {
-      async searchBook() {
-      const response = await axios.get(`https://www.googleapis.com/books/v1/volumes?q=${this.title}`)
-      this.$emit("booksFound", response.data.items)
-
-
+    async searchBooks() {
+      // search for books matching the title with the API
+      // emit the books found
+      let booksFound = null;
+      if (this.title.length > 0) {
+        const response = await axios.get(
+          `https://www.googleapis.com/books/v1/volumes?q=${this.title}`
+        );
+        if (response.status == 200) booksFound = response.data.items;
+      }
+      this.$emit("booksFound", booksFound);
     }
   }
 };
