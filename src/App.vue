@@ -1,23 +1,25 @@
 <template>
-  <div id="app">
-    <HelloWorld @booksFound="updateBooksFoundList"/>
-    <BooksFoundList v-if="this.booksFoundList" :booksFoundList="booksFoundList"/>
-  </div>
+  <v-app>
+    <v-content>
+      <SearchBook @booksFound="updateBooksFoundList" />
+      <BooksFoundList :booksFoundList="booksFoundList" />
+    </v-content>
+  </v-app>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
-import BooksFoundList from "./components/BooksFoundList.vue";
+import SearchBook from "./components/SearchBook";
+import BooksFoundList from "./components/BooksFoundList";
 
 export default {
-  name: "app",
+  name: "App",
   components: {
-    HelloWorld,
+    SearchBook,
     BooksFoundList
   },
-  data() {
-    return { booksFoundList: [ ] };
-  },
+  data: () => ({
+    booksFoundList: []
+  }),
   methods: {
     updateBooksFoundList(booklist) {
       this.booksFoundList = booklist;
@@ -25,13 +27,3 @@ export default {
   }
 };
 </script>
-
-<style>
-#app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
