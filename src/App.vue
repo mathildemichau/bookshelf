@@ -1,39 +1,22 @@
 <template>
-  <v-app>
-    <v-content>
+  <v-app >
+    <v-content class="grey lighten-5">
       <Navigation />
-      <v-container>
-        <v-row>
-          <SearchBook @booksFound="updateBooksFoundList" />
-        </v-row>
-        <v-row>
-          <BooksFoundList :booksFoundList="booksFoundList" />
-        </v-row>
-      </v-container>
+        <BooksRead />
     </v-content>
   </v-app>
 </template>
 
 
 <script>
-import SearchBook from "./components/SearchBook";
-import BooksFoundList from "./components/BooksFoundList";
 import Navigation from "./components/Navigation";
+import BooksRead from "./views/BooksRead";
 
 export default {
   name: "App",
   components: {
-    SearchBook,
-    BooksFoundList,
-    Navigation
-  },
-  data: () => ({
-    booksFoundList: []
-  }),
-  methods: {
-    updateBooksFoundList(booklist) {
-      this.booksFoundList = booklist;
-    }
+    Navigation,
+    BooksRead
   }
 };
 </script>
