@@ -17,17 +17,28 @@
           <v-container fill-height fluid class="ma-0 pa-0">
             <v-img src="https://covers.openlibrary.org/b/id/7891413-L.jpg" height="120"></v-img>
           </v-container>
-          <div>
-            <v-card-title height="100" class="ma-0 pa-3">
-              <span class="text-truncate">La horde du contrevent</span>
-              <span class="grey--text body-2 d-inline-block">Alain Damasio</span>
-            </v-card-title>
-          </div>
+          <v-card-title height="100" class="ma-0 pa-3">
+            <span class="text-truncate">La horde du contrevent</span>
+            <span class="grey--text body-2 d-inline-block">Alain Damasio</span>
+          </v-card-title>
+          <v-card-text>
+            <div class="text-left">
+              <v-rating
+                small
+                dense
+                :value="n%5.5"
+                color="yellow darken-3"
+                background-color="grey darken-1"
+                half-increments
+                hover
+              ></v-rating>
+            </div>
+          </v-card-text>
         </v-card>
       </v-col>
 
       <v-col v-for="n in 30" :key="n" class="no-grow">
-        <v-card hover width="250" height="100%" max-height="200">
+        <v-card hover width="250" height="100%">
           <v-container fluid class="ma-0 pa-0">
             <v-img :src="`https://picsum.photos/10${n}/310?random`" height="120"></v-img>
           </v-container>
@@ -36,6 +47,19 @@
               <span class="text-truncate">Lorem Ipsum dolor sit amet</span>
               <span class="grey--text body-2 d-inline-block text-truncate">Consectetur Edit</span>
             </v-card-title>
+            <v-card-text>
+              <div class="text-left">
+                <v-rating
+                  small
+                  dense
+                  :value="n%5.5"
+                  color="yellow darken-3"
+                  background-color="grey darken-1"
+                  half-increments
+                  hover
+                ></v-rating>
+              </div>
+            </v-card-text>
           </v-container>
         </v-card>
       </v-col>
