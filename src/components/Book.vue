@@ -1,7 +1,7 @@
 <template>
   <v-card hover width="250" height="100%" flat>
     <v-container fluid class="ma-0 pa-0">
-      <v-img src="https://picsum.photos/10/310?random" height="120"></v-img>
+      <v-img :src="cover" height="120"></v-img>
     </v-container>
     <v-container height="100%" fluid class="ma-0 pa-0">
       <v-card-title min-height="100" class="ma-0 pa-3 text-truncate" height="100">
@@ -30,7 +30,8 @@ export default {
   name: "Book",
   props: {
     title: String,
-    author: String
+    author: String,
+    cover: String
   }
 };
 </script>       
