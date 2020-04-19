@@ -2,7 +2,7 @@
   <v-container fluid>
     <v-row class="ma-6">
       <v-col class="no-grow">
-        <v-card height="100%" width="250" flat class="border-dashed-light" hover>
+        <v-card height="100%" width="250" class="border-dashed-light" flat>
           <v-container fill-height fluid>
             <v-row align="center" justify="center">
               <v-btn class="mx-2" fab dark color="teal darken-4">
@@ -13,7 +13,7 @@
         </v-card>
       </v-col>
       <v-col class="no-grow">
-        <v-card hover width="250">
+        <v-card hover width="250" flat>
           <v-container fill-height fluid class="ma-0 pa-0">
             <v-img src="https://covers.openlibrary.org/b/id/7891413-L.jpg" height="120"></v-img>
           </v-container>
@@ -24,11 +24,11 @@
           <v-card-text>
             <div class="text-left">
               <v-rating
+                color="teal"
                 small
                 dense
                 :value="n%5.5"
-                color="yellow darken-3"
-                background-color="grey darken-1"
+                background-color="teal lighten-3"
                 half-increments
                 hover
               ></v-rating>
@@ -38,34 +38,22 @@
       </v-col>
 
       <v-col v-for="n in 30" :key="n" class="no-grow">
-        <v-card hover width="250" height="100%">
-          <v-container fluid class="ma-0 pa-0">
-            <v-img :src="`https://picsum.photos/10${n}/310?random`" height="120"></v-img>
-          </v-container>
-          <v-container height="100%" fluid class="ma-0 pa-0">
-            <v-card-title min-height="100" class="ma-0 pa-3 text-truncate" height="100">
-              <span class="text-truncate">Lorem Ipsum dolor sit amet</span>
-              <span class="grey--text body-2 d-inline-block text-truncate">Consectetur Edit</span>
-            </v-card-title>
-            <v-card-text>
-              <div class="text-left">
-                <v-rating
-                  small
-                  dense
-                  :value="n%5.5"
-                  color="yellow darken-3"
-                  background-color="grey darken-1"
-                  half-increments
-                  hover
-                ></v-rating>
-              </div>
-            </v-card-text>
-          </v-container>
-        </v-card>
+        <book author="Lorem ipsum" title="Fluctuat ner mergitur" />
       </v-col>
     </v-row>
   </v-container>
 </template>
+
+<script>
+import Book from "../components/Book";
+export default {
+  name: "BooksRead",
+  components: {
+    Book
+  },
+  data: () => ({})
+};
+</script>
 
 <style scoped>
 .border-dashed-light {
