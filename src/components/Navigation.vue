@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-app-bar app color="white" class="teal--text text--darken-4" flat>
+    <v-app-bar app color="teal lighten-3"  flat dark>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
       <v-toolbar-title>B O O K S H E L F</v-toolbar-title>
     </v-app-bar>
