@@ -2,15 +2,11 @@
   <v-dialog v-model="overlay" persistent max-width="600px">
     <!-- Card with button to add a book -->
     <template v-slot:activator="{ on }">
-      <v-card width="250" class="border-dashed-light" flat @click="overlay = true" height="230">
-        <v-container fill-height fluid>
-          <v-row align="center" justify="center">
-            <v-btn class="mx-2" fab dark color="teal darken-4">
-              <v-icon dark>mdi-plus</v-icon>
-            </v-btn>
-          </v-row>
-        </v-container>
-      </v-card>
+      <!-- <v-card width="250" class="border-dashed-light" flat @click="overlay = true" height="230"> -->
+      <v-btn @click="overlay = true" absolute dark fab bottom right color="pink" class="ma-12">
+        <v-icon>mdi-plus</v-icon>
+      </v-btn>
+      <!-- </v-card> -->
     </template>
     <!-- Form to fill to add a new book -->
     <v-card>
@@ -54,10 +50,8 @@ export default {
       newBook.title = response.data[`ISBN:${this.isbn}`].title;
       newBook.author = response.data[`ISBN:${this.isbn}`].authors[0].name;
       newBook.cover = response.data[`ISBN:${this.isbn}`].cover.large;
-      console.log(newBook);
       this.$emit("addBook", newBook);
-      this.overlay = false
-
+      this.overlay = false;
     }
   }
 };
