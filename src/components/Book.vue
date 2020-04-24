@@ -11,10 +11,10 @@
         <div class="mb-2 grey--text body-2 text-truncate">{{author}}</div>
         <div class="text-left">
           <v-rating
-            color="teal"
+            color="indigo"
             small
             dense
-            background-color="teal lighten-3"
+            background-color="indigo lighten-3"
             half-increments
             hover
           ></v-rating>

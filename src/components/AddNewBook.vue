@@ -3,7 +3,7 @@
     <!-- Card with button to add a book -->
     <template v-slot:activator="{ on }">
       <!-- <v-card width="250" class="border-dashed-light" flat @click="overlay = true" height="230"> -->
-      <v-btn @click="overlay = true" absolute dark fab bottom right color="pink" class="ma-12">
+      <v-btn @click="overlay = true" absolute dark fab bottom right color="indigo lighten-3" class="ma-12">
         <v-icon>mdi-plus</v-icon>
       </v-btn>
       <!-- </v-card> -->
