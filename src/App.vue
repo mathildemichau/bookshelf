@@ -1,21 +1,21 @@
 <template>
-  <v-app >
+  <v-app>
     <v-content class="grey lighten-4">
-      <Navigation />
-        <BooksRead />
+      <the-navigation-bar />
+      <books-read />
     </v-content>
   </v-app>
 </template>
 
 
 <script>
-import Navigation from "./components/Navigation";
+import TheNavigationBar from "./components/TheNavigationBar";
 import BooksRead from "./views/BooksRead";
 
 export default {
   name: "App",
   components: {
-    Navigation,
+    TheNavigationBar,
     BooksRead
   }
 };

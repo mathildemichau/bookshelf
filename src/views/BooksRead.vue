@@ -1,26 +1,32 @@
 <template>
-  <v-container fluid>
+  <v-container>
     <v-row class="ma-6">
-      <v-col class="no-grow">
-        <add-book @addBook="addBook($event)" />
-      </v-col>
+      <add-new-book-dialog :overlay="overlay" @addBook="addBook($event)" />
 
       <v-col class="no-grow" v-for="book in books" :key="book.title">
-        <book :author="book.author" :title="book.title" :cover="book.cover" />
+        <book-card
+          :author="book.author"
+          :title="book.title"
+          :cover="book.cover"
+        />
       </v-col>
     </v-row>
+
+    <add-new-book-button @new-book="test" />
   </v-container>
 </template>
 
 <script>
-import Book from "../components/Book";
-import AddBook from "../components/AddNewBook";
+import BookCard from "../components/BookCard";
+import AddNewBookDialog from "../components/AddNewBookDialog";
+import AddNewBookButton from "../components/AddNewBookButton";
 
 export default {
   name: "BooksRead",
   components: {
-    Book,
-    AddBook
+    BookCard,
+    AddNewBookDialog,
+    AddNewBookButton
   },
   data: () => ({
     overlay: false,
@@ -28,8 +34,12 @@ export default {
   }),
   methods: {
     addBook(event) {
-      console.log(event);
       this.books.push(event);
+      this.overlay = false
+    },
+    test() {
+      this.overlay = true;
+      this.$forceUpdate()
     }
   }
 };

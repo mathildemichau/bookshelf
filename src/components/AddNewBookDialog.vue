@@ -1,18 +1,8 @@
 <template>
-  <v-dialog v-model="overlay" persistent max-width="600px">
-    <!-- Card with button to add a book -->
-    <template v-slot:activator="{ on }">
-      <!-- <v-card width="250" class="border-dashed-light" flat @click="overlay = true" height="230"> -->
-      <v-btn @click="overlay = true" absolute dark fab bottom right color="indigo lighten-3" class="ma-12">
-        <v-icon>mdi-plus</v-icon>
-      </v-btn>
-      <!-- </v-card> -->
-    </template>
+  <v-dialog :value="show" persistent max-width="600px">
     <!-- Form to fill to add a new book -->
     <v-card>
-      <v-card-title>
-        <span class="headline">Add a new book</span>
-      </v-card-title>
+      <v-card-title class="headline">Add a new book</v-card-title>
       <v-card-text>
         <v-container>
           <v-row>
@@ -32,26 +22,32 @@
 </template>
 
 <script>
-const axios = require("axios");
+import axios from 'axios'
+
 
 export default {
+  props: {
+    overlay: Boolean
+  },
   data: () => ({
-    overlay: false,
     isbn: null,
-    event: null
+    event: null,
+    show: true
   }),
-
   methods: {
     saveBook: async function() {
       const response = await axios.get(
         `https://openlibrary.org/api/books?bibkeys=ISBN:${this.isbn}&jscmd=data&format=json`
       );
-      let newBook = {};
+
+      const newBook = {};
       newBook.title = response.data[`ISBN:${this.isbn}`].title;
       newBook.author = response.data[`ISBN:${this.isbn}`].authors[0].name;
       newBook.cover = response.data[`ISBN:${this.isbn}`].cover.large;
       this.$emit("addBook", newBook);
-      this.overlay = false;
+    },
+    closeDialog: function() {
+      this.$emit("closeDialog");
     }
   }
 };
@@ -61,6 +57,7 @@ export default {
 .white-background {
   background-color: white;
 }
+
 .border-dashed-light {
   border: dashed grey;
 }
