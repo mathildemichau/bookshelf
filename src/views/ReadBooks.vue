@@ -4,7 +4,8 @@
       <h3 class="headline">No book to display</h3>
       <v-divider class="my-4 info" style="opacity: 0.22"></v-divider>
       <div>
-        Start by adding a book to your bookshelf by clicking on the "+" button in the bottom-right corner.
+        Start by adding a book to your bookshelf by clicking on the "+" button
+        in the bottom-right corner.
       </div>
     </v-alert>
     <v-row class="ma-6">
@@ -32,7 +33,7 @@ import AddBookDialog from "@/components/AddBookDialog";
 import AddNewResourceButton from "@/components/AddNewResourceButton";
 
 export default {
-  name: "BooksRead",
+  name: "ReadBooks",
   components: {
     BookCard,
     AddBookDialog,
@@ -44,7 +45,14 @@ export default {
   }),
   methods: {
     addBook(event) {
-      this.books.push(event);
+      const isInBookshelf = book => {
+        return book.author === event.author && book.title === event.title;
+      };
+
+      // if the received book is not in the bookshelf yet, add it
+      if (this.books.findIndex(isInBookshelf) == -1) {
+        this.books.push(event);
+      }
     }
   }
 };
