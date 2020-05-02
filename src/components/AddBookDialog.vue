@@ -14,8 +14,8 @@
       </v-card-text>
       <v-card-actions>
         <v-spacer></v-spacer>
-        <v-btn color="red darken-1" text @click="close">Close</v-btn>
-        <v-btn color="blue darken-1" text @click="saveBook">Save</v-btn>
+        <v-btn :disabled="fetchingData" color="red darken-1" text @click="close">Close</v-btn>
+        <v-btn :loading="fetchingData" color="blue darken-1" text @click="saveBook">Save</v-btn>
       </v-card-actions>
     </v-card>
   </v-dialog>
@@ -31,10 +31,12 @@ export default {
     show: Boolean
   },
   data: () => ({
-    isbn: null
+    isbn: null,
+    fetchingData: false,
   }),
   methods: {
     saveBook: async function() {
+      this.fetchingData = true
       const response = await axios.get(api.getBookByIsbn(this.isbn));
       const key = `ISBN:${this.isbn}`
       const newBook = {};
@@ -42,6 +44,8 @@ export default {
       newBook.title = response.data[key].title;
       newBook.author = response.data[key].authors[0].name;
       newBook.cover = response.data[key].cover.large;
+
+      this.fetchingData = false
 
       this.$emit("add-book", newBook);
       this.close()
