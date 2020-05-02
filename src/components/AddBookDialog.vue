@@ -14,7 +14,7 @@
       </v-card-text>
       <v-card-actions>
         <v-spacer></v-spacer>
-        <v-btn color="red darken-1" text @click="closeDialog">Close</v-btn>
+        <v-btn color="red darken-1" text @click="close">Close</v-btn>
         <v-btn color="blue darken-1" text @click="saveBook">Save</v-btn>
       </v-card-actions>
     </v-card>
@@ -46,8 +46,8 @@ export default {
       this.$emit("add-book", newBook);
       this.closeDialog()
     },
-    closeDialog: function() {
-      this.$emit('close-dialog');
+    close: function() {
+      this.$emit('close');
     }
   }
 };
