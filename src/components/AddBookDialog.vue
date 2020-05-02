@@ -1,20 +1,20 @@
 <template>
   <v-dialog :value="show" persistent max-width="600px">
     <!-- Form to fill to add a new book -->
-    <v-card>
+    <v-card class="pa-3">
       <v-card-title class="headline">Add a new book</v-card-title>
       <v-card-text>
         <v-container>
           <v-row>
             <v-col cols="12" sm="6">
-              <v-text-field label="ISBN*" required v-model.trim="isbn"></v-text-field>
+              <v-text-field solo label="ISBN" required v-model.trim="isbn" prepend-inner-icon="mdi-barcode"></v-text-field>
             </v-col>
           </v-row>
         </v-container>
       </v-card-text>
       <v-card-actions>
         <v-spacer></v-spacer>
-        <v-btn color="blue darken-1" text @click="closeDialog">Close</v-btn>
+        <v-btn color="red darken-1" text @click="closeDialog">Close</v-btn>
         <v-btn color="blue darken-1" text @click="saveBook">Save</v-btn>
       </v-card-actions>
     </v-card>
