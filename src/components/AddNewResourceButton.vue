@@ -18,7 +18,7 @@
 export default {
   methods: {
     buttonClicked: function() {
-      this.$emit("new-book");
+      this.$emit("create-new-resource");
     }
   }
 };

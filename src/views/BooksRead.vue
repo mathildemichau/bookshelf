@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <v-row class="ma-6">
-      <add-new-book-dialog :overlay="overlay" @addBook="addBook($event)" />
+      <add-new-book-dialog :show="show" @add-new-book="addBook($event)" @close-dialog="show = false" />
 
       <v-col class="no-grow" v-for="book in books" :key="book.title">
         <book-card
@@ -12,34 +12,32 @@
       </v-col>
     </v-row>
 
-    <add-new-book-button @new-book="test" />
+    <add-new-resource-button @create-new-resource="displayNewBookDialog" />
   </v-container>
 </template>
 
 <script>
 import BookCard from "../components/BookCard";
 import AddNewBookDialog from "../components/AddNewBookDialog";
-import AddNewBookButton from "../components/AddNewBookButton";
+import AddNewResourceButton from "../components/AddNewResourceButton";
 
 export default {
   name: "BooksRead",
   components: {
     BookCard,
     AddNewBookDialog,
-    AddNewBookButton
+    AddNewResourceButton
   },
   data: () => ({
-    overlay: false,
+    show: false,
     books: []
   }),
   methods: {
     addBook(event) {
       this.books.push(event);
-      this.overlay = false
     },
-    test() {
-      this.overlay = true;
-      this.$forceUpdate()
+    displayNewBookDialog: function() {
+      this.show = true;
     }
   }
 };

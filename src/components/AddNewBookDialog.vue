@@ -14,7 +14,7 @@
       </v-card-text>
       <v-card-actions>
         <v-spacer></v-spacer>
-        <v-btn color="blue darken-1" text @click="overlay = false">Close</v-btn>
+        <v-btn color="blue darken-1" text @click="closeDialog">Close</v-btn>
         <v-btn color="blue darken-1" text @click="saveBook">Save</v-btn>
       </v-card-actions>
     </v-card>
@@ -27,12 +27,11 @@ import axios from 'axios'
 
 export default {
   props: {
-    overlay: Boolean
+    show: Boolean
   },
   data: () => ({
     isbn: null,
     event: null,
-    show: true
   }),
   methods: {
     saveBook: async function() {
@@ -44,10 +43,11 @@ export default {
       newBook.title = response.data[`ISBN:${this.isbn}`].title;
       newBook.author = response.data[`ISBN:${this.isbn}`].authors[0].name;
       newBook.cover = response.data[`ISBN:${this.isbn}`].cover.large;
-      this.$emit("addBook", newBook);
+      this.$emit("add-new-book", newBook);
+      this.closeDialog()
     },
     closeDialog: function() {
-      this.$emit("closeDialog");
+      this.$emit('close-dialog');
     }
   }
 };
