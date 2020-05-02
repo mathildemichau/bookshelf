@@ -44,7 +44,7 @@ export default {
       newBook.cover = response.data[key].cover.large;
 
       this.$emit("add-book", newBook);
-      this.closeDialog()
+      this.close()
     },
     close: function() {
       this.$emit('close');
