@@ -31,8 +31,7 @@ export default {
     show: Boolean
   },
   data: () => ({
-    isbn: null,
-    event: null,
+    isbn: null
   }),
   methods: {
     saveBook: async function() {
