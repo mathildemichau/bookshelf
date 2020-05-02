@@ -37,6 +37,7 @@ export default {
   methods: {
     saveBook: async function() {
       this.fetchingData = true
+      
       const response = await axios.get(api.getBookByIsbn(this.isbn));
       const key = `ISBN:${this.isbn}`
       const newBook = {};
@@ -46,7 +47,6 @@ export default {
       newBook.cover = response.data[key].cover.large;
 
       this.fetchingData = false
-
       this.$emit("add-book", newBook);
       this.close()
     },

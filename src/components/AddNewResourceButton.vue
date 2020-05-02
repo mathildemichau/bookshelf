@@ -6,7 +6,6 @@
     fab
     bottom
     right
-    x-large
     color="indigo lighten-3"
     class="ma-6"
   >
