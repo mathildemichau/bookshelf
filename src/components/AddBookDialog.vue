@@ -23,6 +23,7 @@
 
 <script>
 import axios from 'axios'
+import api from '@/services/api'
 
 
 export default {
@@ -35,15 +36,15 @@ export default {
   }),
   methods: {
     saveBook: async function() {
-      const response = await axios.get(
-        `https://openlibrary.org/api/books?bibkeys=ISBN:${this.isbn}&jscmd=data&format=json`
-      );
-
+      const response = await axios.get(api.getBookByIsbn(this.isbn));
+      const key = `ISBN:${this.isbn}`
       const newBook = {};
-      newBook.title = response.data[`ISBN:${this.isbn}`].title;
-      newBook.author = response.data[`ISBN:${this.isbn}`].authors[0].name;
-      newBook.cover = response.data[`ISBN:${this.isbn}`].cover.large;
-      this.$emit("add-new-book", newBook);
+
+      newBook.title = response.data[key].title;
+      newBook.author = response.data[key].authors[0].name;
+      newBook.cover = response.data[key].cover.large;
+
+      this.$emit("add-book", newBook);
       this.closeDialog()
     },
     closeDialog: function() {

@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <v-row class="ma-6">
-      <add-book-dialog :show="showAddBookDialog" @add-book="addBook($book)" @close-dialog="showAddBookDialog = false" />
+      <add-book-dialog :show="showAddBookDialog" @add-book="addBook($event)" @close-dialog="showAddBookDialog = false" />
 
       <v-col class="no-grow" v-for="book in books" :key="book.title">
         <book-card
@@ -34,8 +34,8 @@ export default {
     books: []
   }),
   methods: {
-    addBook(book) {
-      this.books.push(book);
+    addBook(event) {
+      this.books.push(event);
     }
   }
 };
