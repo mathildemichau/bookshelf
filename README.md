@@ -1,2 +1,2 @@
-# bookshelf
-Stp forgetting about books you read
+# Bookshelf
+Keep track of every book you have read!
