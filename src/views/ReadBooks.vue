@@ -23,7 +23,7 @@
       @add-book="addBook($event)"
       @close="showAddBookDialog = false"
     />
-    <add-new-resource-button @create-new-resource="showAddBookDialog = true" />
+    <add-new-resource-button @button-clicked="showAddBookDialog = true" />
   </v-container>
 </template>
 

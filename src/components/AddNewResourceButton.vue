@@ -14,10 +14,13 @@
 </template>
 
 <script>
+import events from '@/services/events'
+
+
 export default {
   methods: {
     buttonClicked: function() {
-      this.$emit("create-new-resource");
+      this.$emit(events.addNewResourceButton.buttonClicked);
     }
   }
 };

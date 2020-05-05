@@ -23,6 +23,7 @@
 
 <script>
 import books from '@/services/books'
+import events from '@/services/events'
 
 
 export default {
@@ -36,13 +37,15 @@ export default {
   methods: {
     saveBook: async function() {
       this.fetchingData = true
+
       const newBook = await books.getBookByIsbn(this.isbn);
+
       this.fetchingData = false
-      this.$emit("add-book", newBook);
+      this.$emit(events.addBookDialog.addBook, newBook);
       this.close()
     },
     close: function() {
-      this.$emit('close');
+      this.$emit(events.addBookDialog.close);
     }
   }
 };
