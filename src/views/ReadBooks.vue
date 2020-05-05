@@ -31,6 +31,7 @@
 import BookCard from "@/components/BookCard";
 import AddBookDialog from "@/components/AddBookDialog";
 import AddNewResourceButton from "@/components/AddNewResourceButton";
+import Books from "@/services/books"
 
 export default {
   name: "ReadBooks",
@@ -43,6 +44,9 @@ export default {
     showAddBookDialog: false,
     books: []
   }),
+  mounted: function() {
+    this.books = Books.getAllReadBooks()
+  },
   methods: {
     addBook(event) {
       const isInBookshelf = book => {

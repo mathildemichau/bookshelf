@@ -14,13 +14,13 @@
 </template>
 
 <script>
-import events from '@/services/events'
+import Events from '@/services/events'
 
 
 export default {
   methods: {
     buttonClicked: function() {
-      this.$emit(events.addNewResourceButton.buttonClicked);
+      this.$emit(Events.addNewResourceButton.buttonClicked);
     }
   }
 };

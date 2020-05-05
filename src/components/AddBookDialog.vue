@@ -22,8 +22,8 @@
 </template>
 
 <script>
-import books from '@/services/books'
-import events from '@/services/events'
+import Books from '@/services/books'
+import Events from '@/services/events'
 
 
 export default {
@@ -38,14 +38,14 @@ export default {
     saveBook: async function() {
       this.fetchingData = true
 
-      const newBook = await books.getBookByIsbn(this.isbn);
+      const newBook = await Books.getBookByIsbn(this.isbn);
 
       this.fetchingData = false
-      this.$emit(events.addBookDialog.addBook, newBook);
+      this.$emit(Events.addBookDialog.addBook, newBook);
       this.close()
     },
     close: function() {
-      this.$emit(events.addBookDialog.close);
+      this.$emit(Events.addBookDialog.close);
     }
   }
 };
