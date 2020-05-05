@@ -36,15 +36,7 @@ export default {
   methods: {
     saveBook: async function() {
       this.fetchingData = true
-      
-
-      
       const newBook = await books.getBookByIsbn(this.isbn);
-
-      console.log(newBook)
-
-
-
       this.fetchingData = false
       this.$emit("add-book", newBook);
       this.close()
