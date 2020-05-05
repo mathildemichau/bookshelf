@@ -22,8 +22,7 @@
 </template>
 
 <script>
-import axios from 'axios'
-import api from '@/services/api'
+import books from '@/services/books'
 
 
 export default {
@@ -38,13 +37,13 @@ export default {
     saveBook: async function() {
       this.fetchingData = true
       
-      const response = await axios.get(api.getBookByIsbn(this.isbn));
-      const key = `ISBN:${this.isbn}`
-      const newBook = {};
 
-      newBook.title = response.data[key].title;
-      newBook.author = response.data[key].authors[0].name;
-      newBook.cover = response.data[key].cover.large;
+      
+      const newBook = await books.getBookByIsbn(this.isbn);
+
+      console.log(newBook)
+
+
 
       this.fetchingData = false
       this.$emit("add-book", newBook);
