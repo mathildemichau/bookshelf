@@ -8,6 +8,7 @@
         in the bottom-right corner.
       </div>
     </v-alert>
+
     <v-row class="ma-6">
       <v-col class="no-grow" v-for="book in books" :key="book.title">
         <book-card
@@ -38,7 +39,7 @@ export default {
   components: {
     BookCard,
     AddBookDialog,
-    AddNewResourceButton
+    AddNewResourceButton,
   },
   data: () => ({
     showAddBookDialog: false,

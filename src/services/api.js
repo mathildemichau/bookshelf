@@ -1,8 +1,8 @@
 const api = {
     endpoints: {
-        getBookByIsbn: function(isbn) {
+        getBookByIsbn: function(isbn, key) {
             return {
-                openlibrary: `https://openlibrary.org/api/books?bibkeys=ISBN:${isbn}&jscmd=data&format=json`   
+                openlibrary: `https://openlibrary.org/api/books?bibkeys=${key}:${isbn}&jscmd=data&format=json`   
             }
         }
     }

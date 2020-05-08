@@ -1,5 +1,5 @@
 <template>
-  <v-card hover width="250" height="100%" flat>
+  <v-card rounded hover width="250" height="100%">
     <v-container fluid class="ma-0 pa-0">
       <v-img :src="cover" height="120"></v-img>
     </v-container>
@@ -20,6 +20,11 @@
           ></v-rating>
         </div>
       </v-card-text>
+
+      <!-- <v-overlay absolute value="true">
+        <v-img :src="cover" width="250"></v-img>
+      </v-overlay> -->
+
     </v-container>
   </v-card>
 </template>

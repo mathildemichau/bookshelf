@@ -3,11 +3,16 @@ import axios from "axios"
 import LocalDev from "@/conf/local-dev"
 
 
+const OpenLibraryKeys = {
+  ISBN: 'ISBN',
+  OLID: 'OLID'
+}
+
 const booksServices = {
   getBookByIsbn: async function(isbn) {
     async function getBookByIsbnFromOpenLibrary(isbn) {
       const key = `ISBN:${isbn}`;
-      const response = await axios.get(api.endpoints.getBookByIsbn(isbn).openlibrary);
+      const response = await axios.get(api.endpoints.getBookByIsbn(isbn, OpenLibraryKeys.ISBN).openlibrary);
       const newBook = {}
 
       newBook.title = response.data[key].title;
@@ -25,6 +30,7 @@ const booksServices = {
     const allBooks = LocalDev.db
     const readBooks = []
 
+    // map/reduce
     allBooks.forEach(book => {
       const payload = {
         isbn: book.isbn,
