@@ -5,6 +5,10 @@ const events = {
   },
   addNewResourceButton: {
     buttonClicked: 'button-clicked'
+  },
+  searchBoxComponent: {
+    searchButtonClicked: 'search-button-clicked',
+    close: 'close'
   }
 }
 
