@@ -18,7 +18,8 @@ export default {
   }),
   methods: {
     emitSearch: function() {
-      this.$emit(Events.searchBoxComponent.searchButtonClicked, {searchedValue: this.searchedValue})
+      const transformedText = this.searchedValue.split(' ').join('+')
+      this.$emit(Events.searchBoxComponent.searchButtonClicked, {searchedValue: transformedText})
     }
   }
 }
